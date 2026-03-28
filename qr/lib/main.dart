@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'database/database_helper.dart';
 import 'screens/class_management_screen.dart';
 
-void main() {
+void main() async {
+  // Initialize database for desktop
+  WidgetsFlutterBinding.ensureInitialized();
+  DatabaseHelper.init(); // Initialize FFI for desktop
+
   runApp(const MyApp());
 }
 
@@ -16,6 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         useMaterial3: true,
+        brightness: Brightness.light,
       ),
       home: const ClassManagementScreen(),
     );

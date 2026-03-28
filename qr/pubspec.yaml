@@ -10,31 +10,19 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # QR Code
   qr_flutter: ^4.1.0
-
-  # Scanner
   mobile_scanner: ^5.2.3
-
-  # Permissions
   permission_handler: ^11.3.1
-
-  # Save to gallery
   gal: ^2.3.0
-
-  # Date formatting
   intl: ^0.19.0
-
-  # Share files
   share_plus: ^10.0.0
+  uuid: ^4.3.3
 
-  # Local Database
+  # Database with desktop support
   sqflite: ^2.3.0
+  sqflite_common_ffi: ^2.3.0+4
   path_provider: ^2.1.0
   path: ^1.9.0
-
-  # UUID for unique IDs
-  uuid: ^4.3.3
 
 dev_dependencies:
   flutter_test:

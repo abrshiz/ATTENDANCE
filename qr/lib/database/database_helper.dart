@@ -1,6 +1,8 @@
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
+import 'dart:io';
 import '../models/class_model.dart';
 import '../models/student_model.dart';
 import '../models/attendance_model.dart';
@@ -11,8 +13,23 @@ class DatabaseHelper {
   DatabaseHelper._internal();
 
   Database? _database;
+  static bool _initialized = false;
+
+  // Initialize FFI for desktop platforms
+  static void init() {
+    if (!_initialized) {
+      if (Platform.isLinux || Platform.isWindows || Platform.isMacOS) {
+        // Initialize FFI for desktop
+        sqfliteFfiInit();
+        databaseFactory = databaseFactoryFfi;
+        print('FFI database factory initialized for desktop');
+      }
+      _initialized = true;
+    }
+  }
 
   Future<Database> get database async {
+    init(); // Ensure FFI is initialized
     if (_database != null) return _database!;
     _database = await _initDatabase();
     return _database!;
@@ -74,6 +91,16 @@ class DatabaseHelper {
           ''');
 
           print('Database tables created successfully');
+
+          // Insert a test class to verify
+          await db.insert('classes', {
+            'id': 'test123',
+            'name': 'Test Class',
+            'section': 'Test Section',
+            'subject': 'Test Subject',
+            'createdAt': DateTime.now().toIso8601String(),
+          });
+          print('Test class inserted');
         },
         onOpen: (db) {
           print('Database opened successfully');
