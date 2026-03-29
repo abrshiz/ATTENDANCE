@@ -55,8 +55,8 @@ class _ClassManagementScreenState extends State<ClassManagementScreen> {
               TextFormField(
                 controller: nameController,
                 decoration: const InputDecoration(
-                  labelText: "Class Name *",
-                  hintText: "e.g., Grade 10 - Mathematics",
+                  labelText: "Class Name",
+                  hintText: "Grade 10 - Mathematics",
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.class_),
                 ),
@@ -72,7 +72,7 @@ class _ClassManagementScreenState extends State<ClassManagementScreen> {
                 controller: sectionController,
                 decoration: const InputDecoration(
                   labelText: "Section",
-                  hintText: "e.g., Section A",
+                  hintText: "Section A",
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.group),
                 ),
@@ -82,7 +82,7 @@ class _ClassManagementScreenState extends State<ClassManagementScreen> {
                 controller: subjectController,
                 decoration: const InputDecoration(
                   labelText: "Subject",
-                  hintText: "e.g., Algebra",
+                  hintText: "Algebra",
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.subject),
                 ),
