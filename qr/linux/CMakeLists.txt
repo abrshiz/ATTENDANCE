@@ -126,3 +126,25 @@ if(NOT CMAKE_BUILD_TYPE MATCHES "Debug")
   install(FILES "${AOT_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
     COMPONENT Runtime)
 endif()
+# Add this near the end of the file
+install(FILES
+    "${CMAKE_CURRENT_SOURCE_DIR}/flutter/assets/icons/16x16.png"
+    "${CMAKE_CURRENT_SOURCE_DIR}/flutter/assets/icons/32x32.png"
+    "${CMAKE_CURRENT_SOURCE_DIR}/flutter/assets/icons/48x48.png"
+    "${CMAKE_CURRENT_SOURCE_DIR}/flutter/assets/icons/64x64.png"
+    "${CMAKE_CURRENT_SOURCE_DIR}/flutter/assets/icons/128x128.png"
+    "${CMAKE_CURRENT_SOURCE_DIR}/flutter/assets/icons/256x256.png"
+    "${CMAKE_CURRENT_SOURCE_DIR}/flutter/assets/icons/512x512.png"
+    DESTINATION share/icons/hicolor/16x16/apps/
+    DESTINATION share/icons/hicolor/32x32/apps/
+    DESTINATION share/icons/hicolor/48x48/apps/
+    DESTINATION share/icons/hicolor/64x64/apps/
+    DESTINATION share/icons/hicolor/128x128/apps/
+    DESTINATION share/icons/hicolor/256x256/apps/
+    DESTINATION share/icons/hicolor/512x512/apps/
+)
+# Install desktop file
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/flutter/app.desktop"
+    DESTINATION share/applications
+    RENAME qr_app.desktop
+)
